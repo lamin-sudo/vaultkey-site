@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Help &amp; support — VaultKey</title>
+<meta name="description" content="Answers to the questions VaultKey actually gets asked, plus a form and an email address that reach the person who wrote the app.">
+<meta name="theme-color" content="#0d1411">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VaultKey — Help &amp; support">
+<meta property="og:url" content="https://lamin-sudo.github.io/vaultkey-site/support.html">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap mast-row">
+    <a class="brand" href="./">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M12,1.8 L20.6,5 L20.6,11.6 C20.6,16.8 17,21 12,22.6 C7,21 3.4,16.8 3.4,11.6 L3.4,5 Z M12,6.8 C13.32,6.8 14.4,7.88 14.4,9.2 C14.4,10.18 13.83,11.03 13,11.45 L13.45,15.2 L10.55,15.2 L11,11.45 C10.17,11.03 9.6,10.18 9.6,9.2 C9.6,7.88 10.68,6.8 12,6.8 Z"/></svg>
+      VaultKey
+    </a>
+    <nav class="sites">
+      <a href="./">Overview</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="support.html" aria-current="page">Support</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="wrap doc-head">
+    <p class="mono">help / support</p>
+    <h1>Help &amp; support</h1>
+    <div class="meta">
+      <div><span class="mono">answered by</span><b>the person who wrote the app</b></div>
+      <div><span class="mono">typical reply</span><b>a few days — it is not a call centre</b></div>
+      <div><span class="mono">before writing</span><b><a href="VaultKey-v52.apk" download>get the current build</a></b></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap split">
+
+      <form class="panel" action="https://formspree.io/f/xldjrdvz" method="POST">
+        <p class="mono" style="color:var(--primary)">01 / send a message</p>
+
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" type="text" name="name" autocomplete="name" placeholder="Optional" maxlength="120">
+        </div>
+
+        <div class="field">
+          <label for="f-email">Email for the reply</label>
+          <input id="f-email" type="email" name="email" autocomplete="email" required placeholder="you@example.com">
+        </div>
+
+        <div class="field">
+          <label for="f-topic">What is it about</label>
+          <input id="f-topic" type="text" name="topic" placeholder="Sync, autofill, a crash, a feature…" maxlength="160">
+        </div>
+
+        <div class="field">
+          <label for="f-message">Message</label>
+          <textarea id="f-message" name="message" required maxlength="5000" placeholder="What happened, what you expected, which Android version and which VaultKey build."></textarea>
+        </div>
+
+        <!-- Honeypot for bots: hidden by position, and never styled as a field. -->
+        <div class="hp" aria-hidden="true">
+          <label for="f-gotcha">Leave this empty</label>
+          <input id="f-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+
+        <input type="hidden" name="_subject" value="VaultKey support request">
+
+        <button class="btn btn-primary" type="submit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 12h16m0 0-6-6m6 6-6 6"/></svg>
+          Send message
+        </button>
+
+        <p class="form-note">This form posts through Formspree, which forwards the message to the address below. Send only what you want read — never a master password, an entry's contents, or a screenshot of the vault (Android blocks those anyway).</p>
+      </form>
+
+      <div>
+        <div class="mailcard">
+          <p class="mono">02 / or write directly</p>
+          <a href="mailto:lamindzru@gmail.com">lamindzru@gmail.com</a>
+          <p style="color:var(--muted);margin:6px 0 0;font-size:15px">One inbox, read by one person. Bug reports with a repro are the ones that get fixed; a security report is welcome in any language you are comfortable writing.</p>
+        </div>
+
+        <div class="note" style="margin-top:18px">
+          <p class="mono">useful links</p>
+          <h3 style="font-size:18px">Where to look first</h3>
+          <p style="margin-bottom:12px">
+            <a href="./">Overview &amp; download</a> ·
+            <a href="privacy.html">Privacy policy</a> ·
+            <a href="terms.html">Terms of service</a> ·
+            <a href="https://support.google.com/accounts/answer/34665">Google: app password &amp; permission help</a> ·
+            <a href="https://drive.google.com/settings/storage">Google Drive storage settings</a>
+          </p>
+          <p>To stop VaultKey reaching your Drive, revoke it at
+            <a href="https://myaccount.google.com/permissions" rel="noopener">myaccount.google.com/permissions</a> — that ends sync on every device at once.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="head">
+        <p class="mono">03 / faq</p>
+        <h2>The questions that come up.</h2>
+      </div>
+
+      <details open>
+        <summary>I forgot my master password. Can you reset it?</summary>
+        <div class="answer">
+          <p>No, and no one else can either. The keys that decrypt the vault are derived from that password with Argon2id, and the app never stores it — there is no recovery path to switch on, by design rather than by omission.</p>
+          <p>If you have an <strong>encrypted backup</strong> made earlier from the Backup screen, you can restore it into a new vault. Otherwise the vault and any cloud copy of it are permanently unreadable. Clearing the app's data starts you again with an empty vault.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Is my password visible to Google when sync is on?</summary>
+        <div class="answer">
+          <p>No. Before anything is uploaded, records are re-encrypted with a separate random sync key that belongs to the vault, and your master password is only used to wrap that key. Google stores the file, and sees a name, a size and an opaque payload.</p>
+          <p>Sync uses one permission only — <code>drive.appdata</code> — which is a hidden folder reserved for the app's own data. It cannot read the rest of your Drive.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Why does the vault lock itself so quickly?</summary>
+        <div class="answer">
+          <p>Because an unlocked vault in a pocket is a readable one. Backgrounding the app ends the session and zeroes the data key; the timeout is yours to set in <strong>Settings → Auto-lock</strong> (from 30 seconds up to never).</p>
+          <p>After five wrong attempts the vault locks out, and the wait grows with each failure: 30 seconds, then 5 minutes, then 30 minutes. Support cannot shorten it and clearing it would defeat it — waiting it out is the intended path, and your data is untouched while you wait.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Autofill offers nothing in apps and browsers.</summary>
+        <div class="answer">
+          <p>Autofill is a system role, not a permission the app can grant itself. Go to <strong>Settings → Autofill</strong> inside VaultKey — it opens the Android autofill picker — and choose VaultKey as the autofill service. On some Android builds you also have to pick it under <em>System settings → Passwords &amp; accounts → Autofill service</em>.</p>
+          <p>Then unlock the vault: an autofill request against a locked vault cannot produce a credential, and the app will ask you to unlock rather than invent one.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Why can't I screenshot the app, or record the screen?</summary>
+        <div class="answer">
+          <p>The app sets <code>FLAG_SECURE</code> on its window, so Android refuses capture and hides the vault from the Recents thumbnail. This is deliberate protection against a password appearing in a screenshot you later shared somewhere, and there is no switch to turn it off.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How do I move my vault to a new phone?</summary>
+        <div class="answer">
+          <p>Two supported routes, and using both is the cautious answer:</p>
+          <p><strong>Sync:</strong> sign in with the same Google account on the new device, tap <em>Sync now</em>, and enter the master password when asked once so the new device can unwrap the existing sync key.</p>
+          <p><strong>Backup file:</strong> export from <em>Backup</em> on the old phone, copy the file across, and restore it on the new one — including into a brand-new vault.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Can I bring passwords in from my browser?</summary>
+        <div class="answer">
+          <p>Yes — <strong>Settings → Import</strong> reads exports from Chrome, Firefox, or a CSV file, and lets you choose what to do with rows that already exist. Export from the browser first (each one hides it under a different “show passwords / export” menu), then pick the file.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Which Android versions are supported?</summary>
+        <div class="answer">
+          <p>Android 8.0 (API 26) and newer; the app targets Android 15. Biometric unlock needs a working enrolled fingerprint or face profile, and passkey support depends on the system credential provider being available on your build.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Is there a web version, an iPhone app, or a browser extension?</summary>
+        <div class="answer">
+          <p>No. VaultKey is Android only, and the vault format is not built to be read by anything else. If you need iPhone or a browser extension, plan on a manager that ships them — storing your only copy of a vault on a platform you cannot reach is a bad trade.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="./" style="border:0">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M12,1.8 L20.6,5 L20.6,11.6 C20.6,16.8 17,21 12,22.6 C7,21 3.4,16.8 3.4,11.6 L3.4,5 Z M12,6.8 C13.32,6.8 14.4,7.88 14.4,9.2 C14.4,10.18 13.83,11.03 13,11.45 L13.45,15.2 L10.55,15.2 L11,11.45 C10.17,11.03 9.6,10.18 9.6,9.2 C9.6,7.88 10.68,6.8 12,6.8 Z"/></svg>
+          VaultKey
+        </a>
+        <p class="foot sig">Made with a real keyhole in Algeria.</p>
+      </div>
+      <div class="cols">
+        <a href="privacy.html">Privacy policy</a>
+        <a href="terms.html">Terms of service</a>
+        <a href="support.html">Help &amp; support</a>
+        <a href="mailto:lamindzru@gmail.com">lamindzru@gmail.com</a>
+        <a href="https://github.com/lamin-sudo/VaultKey">Source</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
