@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy policy — VaultKey</title>
+<meta name="description" content="VaultKey stores its vault encrypted on your device and collects nothing. This policy describes exactly what is stored locally, what the optional Google Drive sync sends, and how to delete it.">
+<meta name="theme-color" content="#0d1411">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VaultKey — Privacy policy">
+<meta property="og:url" content="https://lamin-sudo.github.io/vaultkey-site/privacy.html">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap mast-row">
+    <a class="brand" href="./">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M12,1.8 L20.6,5 L20.6,11.6 C20.6,16.8 17,21 12,22.6 C7,21 3.4,16.8 3.4,11.6 L3.4,5 Z M12,6.8 C13.32,6.8 14.4,7.88 14.4,9.2 C14.4,10.18 13.83,11.03 13,11.45 L13.45,15.2 L10.55,15.2 L11,11.45 C10.17,11.03 9.6,10.18 9.6,9.2 C9.6,7.88 10.68,6.8 12,6.8 Z"/></svg>
+      VaultKey
+    </a>
+    <nav class="sites">
+      <a href="./">Overview</a>
+      <a href="privacy.html" aria-current="page">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="support.html">Support</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="wrap doc-head">
+    <p class="mono">legal / privacy</p>
+    <h1>Privacy policy</h1>
+    <div class="meta">
+      <div><span class="mono">applies to</span><b>VaultKey for Android · build 52</b></div>
+      <div><span class="mono">last reviewed</span><b>14 October 2026</b></div>
+      <div><span class="mono">contact</span><b><a href="mailto:lamindzru@gmail.com">lamindzru@gmail.com</a></b></div>
+    </div>
+  </div>
+
+  <div class="wrap doc">
+    <nav class="toc" aria-label="Sections">
+      <span class="mono">in this policy</span>
+      <a href="#s1">1 · The short version</a>
+      <a href="#s2">2 · What we do not collect</a>
+      <a href="#s3">3 · What is stored on your device</a>
+      <a href="#s4">4 · Google sign-in and Drive sync</a>
+      <a href="#s5">5 · Permissions and why</a>
+      <a href="#s6">6 · Logs and diagnostics</a>
+      <a href="#s7">7 · Retention and deletion</a>
+      <a href="#s8">8 · Security, stated honestly</a>
+      <a href="#s9">9 · Children</a>
+      <a href="#s10">10 · Changes to this policy</a>
+    </nav>
+
+    <div class="prose">
+
+      <div class="summary">
+        <p class="mono" style="color:var(--primary)">plain-language summary</p>
+        <ul>
+          <li>VaultKey has no server. It never sends your vault anywhere you did not choose.</li>
+          <li>It collects no analytics, no advertising identifiers, no crash reports, no usage tracking.</li>
+          <li>Your passwords, titles, URLs, notes and 2FA seeds stay encrypted on the phone.</li>
+          <li>Optional Google sync copies <strong>already-encrypted</strong> data into <strong>your own</strong> Google Drive appData folder, which Google stores but cannot read.</li>
+          <li>Delete the app, or sign out and turn sync off, and there is nothing left for anyone to hand over.</li>
+        </ul>
+      </div>
+
+      <section id="s1">
+        <p class="num">01</p>
+        <h2>The short version</h2>
+        <p>VaultKey is a local-first password vault for Android. It is developed as a personal project by its author (GitHub: <a href="https://github.com/lamin-sudo">lamin-sudo</a>) and distributed as an APK from this site rather than through Google Play. Because there is no service behind it, there is almost nothing for a privacy policy to excuse — so this document describes what actually happens on your device and, if you turn it on, in your own Drive folder.</p>
+        <p>Where this policy says “we”, it means the person who wrote the app. Where it says “your device”, it means storage only VaultKey and Android can read.</p>
+      </section>
+
+      <section id="s2">
+        <p class="num">02</p>
+        <h2>What we do not collect</h2>
+        <p>VaultKey does not transmit, upload or report any of the following, in any state of the app:</p>
+        <ul>
+          <li>your master password, PIN, or any biometric result;</li>
+          <li>the data key that decrypts your vault, or the sync key that seals it for the cloud;</li>
+          <li>entries: titles, usernames, passwords, URLs, notes, one-time-code (TOTP) secrets;</li>
+          <li>contacts, messages, call logs, camera, microphone or location — the app requests none of them;</li>
+          <li>an advertising ID, a device fingerprint, or a profile of how you use the app;</li>
+          <li>crash reports or analytics events. There is no analytics or crash-reporting library in the build.</li>
+        </ul>
+        <p>Network access in the app is used by exactly two things, both of which you start: the Google sign-in and token renewal handled by Google Play services, and the Drive file transfer described in section 4. If you never sign in for sync, VaultKey makes no outbound request on its own.</p>
+      </section>
+
+      <section id="s3">
+        <p class="num">03</p>
+        <h2>What is stored on your device</h2>
+        <p>Everything the app remembers lives in its private storage area, which Android isolates from other apps. The contents are:</p>
+        <ul>
+          <li><strong>The vault database.</strong> Each record's secrets are encrypted with AES-256-GCM before they are written. The record's own identifier and title are used as authenticated data, so a stored row cannot be moved or rewritten without detection.</li>
+          <li><strong>The verifier for your master password.</strong> A one-way check derived with Argon2id, so the app can tell whether a typed password is right without storing it. The password itself is never written anywhere.</li>
+          <li><strong>The data key.</strong> Held only as a blob wrapped by a key inside the Android Keystore; when the vault is locked, the plain key exists nowhere, and while unlocked it is kept in memory and overwritten with zeroes when the session ends.</li>
+          <li><strong>Biometric wrapper (optional).</strong> If you enable biometric unlock, a second wrapping of the same data key is stored, releasable only by a successful fingerprint or face check on that device. Biometric samples themselves are handled by Android's trusted hardware and never reach the app.</li>
+          <li><strong>Sync records (optional).</strong> After signing in: the Google account address you chose, an OAuth access token scoped to Drive appData, and the wrapped sync key. The address and token are encrypted with a Keystore key before being written; the access token is short-lived and is renewed rather than stored long-term.</li>
+          <li><strong>Display identity (optional).</strong> If you sign in, the app reads the account name and profile photo from the credential Google already hands it, downloads the photo once, and stores it encrypted next to the vault data purely so the Account screen can show who you are. It is never sent anywhere else.</li>
+          <li><strong>Settings.</strong> Auto-lock timing, language, categories, and the last security-scan summary (a score and counts, not entry content).</li>
+        </ul>
+      </section>
+
+      <section id="s4">
+        <p class="num">04</p>
+        <h2>Google sign-in and Drive sync</h2>
+        <p>Sync is opt-in and uses <strong>your</strong> Google account and <strong>your</strong> Drive storage. Nothing is stored on a server belonging to VaultKey, because there is no such server.</p>
+        <h3>What Google sees</h3>
+        <ul>
+          <li><strong>Sign-in.</strong> The app asks Google for an account so it can show the standard “Choose an account” sheet and learn which account you picked. That is the normal “email, profile picture” identity scope Google shows for this kind of sign-in, and it is what lets the app tell you which account is connected.</li>
+          <li><strong>Drive access.</strong> Exactly one permission is requested: <code>https://www.googleapis.com/auth/drive.appdata</code>. This limits the app to its own hidden application-data folder — it cannot read, list or modify anything else in your Drive, and the file does not appear in your normal Drive listings.</li>
+          <li><strong>No client secret, no refresh token.</strong> Renewal is requested through Google's authorization client each time. The APK contains no OAuth client secret.</li>
+        </ul>
+        <h3>What the file contains</h3>
+        <p>One file, named after this installation's device identifier, holds a sealed container. Before anything is uploaded, the vault's secrets are decrypted in memory and re-encrypted with a <strong>separate random sync key</strong> that belongs to the vault — never with your data key, and never with your master password. Your master password only wraps that sync key, and the wrapping sits inside the same sealed header.</p>
+        <p>The practical consequence: Google stores the bytes, and cannot decrypt them. Neither can anyone who obtains the file. If you lose your master password, the cloud copy is as unreadable to the author of this app as it is to a stranger — which is the point, and also the limit; see the Terms.</p>
+        <p>Metadata that leaves the device is limited to what the transport requires: the file name, its size, and an ETag for conflict detection. Entry titles, usernames, passwords and URLs never appear outside the encrypted payload.</p>
+        <h3>Periodic sync</h3>
+        <p>If you enable automatic sync, the app schedules repeating background work through Android's WorkManager, which uploads and downloads that one file. Turning sync off or signing out stops the scheduling.</p>
+      </section>
+
+      <section id="s5">
+        <p class="num">05</p>
+        <h2>Permissions and why</h2>
+        <ul>
+          <li><strong>Use biometrics</strong> — fingerprint or face unlock of the vault, only if you enable it.</li>
+          <li><strong>Internet access</strong> — Google sign-in, token renewal, and Drive sync. Nothing else uses it.</li>
+          <li><strong>Notifications</strong> (Android 13+) — used only for the security-health reminder, and only after you open that screen.</li>
+        </ul>
+        <p>Autofill and the passkey provider are not permissions the app requests: they are system roles you grant in Android settings, at which point the operating system — not VaultKey — decides when to offer the vault.</p>
+      </section>
+
+      <section id="s6">
+        <p class="num">06</p>
+        <h2>Logs and diagnostics</h2>
+        <p>Debug builds write diagnostic lines to Android's system log so problems can be traced on a device: HTTP status codes, failure names, token shape (for example “this is an access token, not an ID token”), and counts. A filter in the logging path drops any line that looks like it carries a secret, and the code never builds a log message out of a password, a data key, a sync key or a token value.</p>
+        <p>Release builds — including the APK on this site — do not plant that logging path at all, and user-visible errors show a plain message without the internal detail. No log leaves your device.</p>
+      </section>
+
+      <section id="s7">
+        <p class="num">07</p>
+        <h2>Retention and deletion</h2>
+        <p>VaultKey keeps data for as long as you keep the app installed, and holds no copy elsewhere. You can remove each layer yourself:</p>
+        <ul>
+          <li><strong>Sign out of sync</strong> in Account — clears the stored token, the account address and the display identity from the device.</li>
+          <li><strong>Turn off or reset sync state</strong> — forgets which cloud file this device was writing to, without touching the vault.</li>
+          <li><strong>Delete the cloud copy</strong> — the app's sync file lives in your own Drive appData folder, and revoking VaultKey's access at <a href="https://myaccount.google.com/permissions" rel="noopener">myaccount.google.com/permissions</a> removes the grant. To delete the file itself, remove the app's access and delete the data from the Drive application-data area, or use <a href="https://drive.google.com/settings/storage" rel="noopener">Drive storage settings</a>.</li>
+          <li><strong>Uninstall the app</strong> — Android removes its private storage, including the encrypted vault. Backups are disabled for this app (<code>allowBackup=false</code>), so the system does not copy the vault into a Google backup.</li>
+        </ul>
+        <p>Because nothing is collected, there is no access request or erasure request to send — with one exception: if you email support, the address you write from and the message itself are held in the mailbox you contacted, like any email. Ask for it to be deleted and it will be.</p>
+      </section>
+
+      <section id="s8">
+        <p class="num">08</p>
+        <h2>Security, stated honestly</h2>
+        <p>Cryptography is a boundary, not a guarantee. Specifically:</p>
+        <ul>
+          <li>Anything you type while the vault is unlocked can be seen by a compromised device — malware with accessibility or screen-reader rights, a modified Android, or someone holding the phone while it is open.</li>
+          <li>Screen capture is blocked inside the app, but that protects screenshots and the Recents thumbnail, not a camera pointed at the screen.</li>
+          <li>The strength of both the local vault and the cloud copy depends on your master password. Argon2id makes guessing slow; it cannot make a short password long.</li>
+          <li>The APK is signed with an Android debug certificate, which is the same certificate every Android development machine generates. That is adequate for personal installs and not what a store-grade release uses; it is stated in the Terms as well, because it affects how you should judge the download.</li>
+        </ul>
+        <p>If you believe you have found a weakness in VaultKey, email <a href="mailto:lamindzru@gmail.com">lamindzru@gmail.com</a>. A report is read personally, and disclosure is yours to choose.</p>
+      </section>
+
+      <section id="s9">
+        <p class="num">09</p>
+        <h2>Children</h2>
+        <p>VaultKey is a general tool for an adult managing their own accounts. It is not directed at children, collects no personal data from anyone, and has no idea whether the person holding the phone is eighteen. A child's password manager is a parent's decision, not a product category.</p>
+      </section>
+
+      <section id="s10">
+        <p class="num">10</p>
+        <h2>Changes to this policy</h2>
+        <p>When the app's behaviour changes, this page changes with it and the review date above is updated. Material changes — a new permission, a new network destination, a new kind of stored data — are worth an email on the support page, because there is no push channel to announce them through.</p>
+        <p style="color:var(--muted)">This policy is written for one Android app distributed by an individual. It is not legal advice, and if you need it to satisfy an employer, a store listing, or a regulator, have someone qualified read it against your actual obligation.</p>
+      </section>
+
+      <div class="hero-cta">
+        <a class="btn btn-ghost" href="terms.html">Read the terms of service</a>
+        <a class="btn btn-ghost" href="support.html">Ask a question</a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="./" style="border:0">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M12,1.8 L20.6,5 L20.6,11.6 C20.6,16.8 17,21 12,22.6 C7,21 3.4,16.8 3.4,11.6 L3.4,5 Z M12,6.8 C13.32,6.8 14.4,7.88 14.4,9.2 C14.4,10.18 13.83,11.03 13,11.45 L13.45,15.2 L10.55,15.2 L11,11.45 C10.17,11.03 9.6,10.18 9.6,9.2 C9.6,7.88 10.68,6.8 12,6.8 Z"/></svg>
+          VaultKey
+        </a>
+        <p class="foot sig">Made with a real keyhole in Algeria.</p>
+      </div>
+      <div class="cols">
+        <a href="privacy.html">Privacy policy</a>
+        <a href="terms.html">Terms of service</a>
+        <a href="support.html">Help &amp; support</a>
+        <a href="mailto:lamindzru@gmail.com">lamindzru@gmail.com</a>
+        <a href="https://github.com/lamin-sudo/VaultKey">Source</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

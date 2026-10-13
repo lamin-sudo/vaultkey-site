@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VaultKey — a password vault that stays on your phone</title>
+<meta name="description" content="VaultKey is an Android password manager that keeps its vault encrypted on the device: Argon2id, AES-256-GCM, Android Keystore, biometric unlock, autofill, TOTP, and optional end-to-end encrypted backup through your own Google Drive appData folder. No accounts, no analytics, no server.">
+<meta name="theme-color" content="#0d1411">
+<meta property="og:type" content="website">
+<meta property="og:title" content="VaultKey — a password vault that stays on your phone">
+<meta property="og:description" content="Local-first Android password manager. Encrypted at rest with Argon2id + AES-256-GCM, sealed in the Android Keystore, with optional end-to-end encrypted Drive sync.">
+<meta property="og:url" content="https://lamin-sudo.github.io/vaultkey-site/">
+<meta property="og:image" content="https://lamin-sudo.github.io/vaultkey-site/assets/logo.svg">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap mast-row">
+    <a class="brand" href="./">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M12,1.8 L20.6,5 L20.6,11.6 C20.6,16.8 17,21 12,22.6 C7,21 3.4,16.8 3.4,11.6 L3.4,5 Z M12,6.8 C13.32,6.8 14.4,7.88 14.4,9.2 C14.4,10.18 13.83,11.03 13,11.45 L13.45,15.2 L10.55,15.2 L11,11.45 C10.17,11.03 9.6,10.18 9.6,9.2 C9.6,7.88 10.68,6.8 12,6.8 Z"/></svg>
+      VaultKey
+    </a>
+    <nav class="sites">
+      <a href="./" aria-current="page">Overview</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="support.html">Support</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <p class="mono">01 / local-first android vault</p>
+        <h1><span class="line">Your keys,</span><span class="line">your phone.</span><span class="line">Nowhere else.</span></h1>
+        <p class="lede">A password manager whose vault never leaves the device unless you tell it to — and even then it goes as ciphertext only you can open.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="VaultKey-v52.apk" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19h16"/></svg>
+            Download VaultKey-v52.apk
+          </a>
+          <a class="btn btn-ghost" href="support.html">Need help?</a>
+        </div>
+        <div class="hero-meta">
+          <div><span class="mono">version</span><b>1.0.0 &nbsp;· build 52</b></div>
+          <div><span class="mono">requires</span><b>Android 8.0+ (API 26)</b></div>
+          <div><span class="mono">package</span><b>com.vaultkey.app</b></div>
+          <div><span class="mono">permissions</span><b>biometrics · internet</b></div>
+        </div>
+      </div>
+
+      <figure class="mark" aria-label="The VaultKey mark: a shield with a keyhole cut through it.">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M12,1.8 L20.6,5 L20.6,11.6 C20.6,16.8 17,21 12,22.6 C7,21 3.4,16.8 3.4,11.6 L3.4,5 Z M12,6.8 C13.32,6.8 14.4,7.88 14.4,9.2 C14.4,10.18 13.83,11.03 13,11.45 L13.45,15.2 L10.55,15.2 L11,11.45 C10.17,11.03 9.6,10.18 9.6,9.2 C9.6,7.88 10.68,6.8 12,6.8 Z"/></svg>
+        <figcaption class="tag mono">vault sealed · device only</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="rule"></div></div>
+
+  <section>
+    <div class="wrap">
+      <div class="head">
+        <p class="mono">02 / what is actually in it</p>
+        <h2>Every feature below is in the APK you are downloading.</h2>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <p class="mono idx">01</p>
+          <h3>Argon2id, then AES-256-GCM</h3>
+          <p>Your master password derives the key with Argon2id; each record is sealed with AES-256-GCM and bound to its own id and title as authenticated data, so a stored row cannot be swapped for another.</p>
+        </article>
+        <article class="card">
+          <p class="mono idx">02</p>
+          <h3>Sealed in the Android Keystore</h3>
+          <p>The data key never sits on disk in the clear. It is wrapped by a Keystore key, and optional biometric unlock puts a second, hardware-backed wrapper on it that only your fingerprint or face can open.</p>
+        </article>
+        <article class="card">
+          <p class="mono idx">03</p>
+          <h3>Autofill and passkeys</h3>
+          <p>VaultKey registers as an Android autofill service and as a credential provider, so sign-in fills in apps and browsers and WebAuthn passkeys live in the same vault as your passwords.</p>
+        </article>
+        <article class="card">
+          <p class="mono idx">04</p>
+          <h3>Auto-lock you can set</h3>
+          <p>Thirty seconds, five minutes, never — your choice. Backgrounding the app ends the session and zeroes the key; repeated wrong attempts lock the vault instead of letting anyone keep guessing.</p>
+        </article>
+        <article class="card">
+          <p class="mono idx">05</p>
+          <h3>TOTP codes and a real generator</h3>
+          <p>Store 2FA authenticator codes beside the login they belong to, and generate passwords with length and character rules you control when you create one.</p>
+        </article>
+        <article class="card">
+          <p class="mono idx">06</p>
+          <h3>Health you can read</h3>
+          <p>A scan of your own vault reports weak, reused and ageing passwords with a score, and a list you can tap straight through to fix each entry.</p>
+        </article>
+        <article class="card">
+          <p class="mono idx">07</p>
+          <h3>Encrypted backup, your files</h3>
+          <p>Export the vault as one encrypted file through the system file picker, and restore it on another phone — including into a brand-new vault, which is how a fresh install gets your data back.</p>
+        </article>
+        <article class="card">
+          <p class="mono idx">08</p>
+          <h3>Three languages, both directions</h3>
+          <p>English, Arabic and French, with the Arabic layout mirrored end to end. The language switch lives in Settings and takes effect immediately.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="rule"></div></div>
+
+  <section>
+    <div class="wrap split">
+      <div>
+        <p class="mono">03 / optional sync</p>
+        <h2>Sync goes to your own Drive, as ciphertext.</h2>
+        <p style="color:var(--muted);margin-top:16px">Cloud sync is off until you sign in with a Google account and enable it. When it is on, one hidden file in your Google Drive appData folder holds the vault — and the scope <code>drive.appdata</code> means neither the file browser nor any other app can see it.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="n">1</span><div><h3>A sync key, not your password</h3><p>A random 256-bit key is generated for the vault. Your master password only wraps it.</p></div></div>
+        <div class="step"><span class="n">2</span><div><h3>Encrypt, then upload</h3><p>Records are decrypted in memory, sealed with the sync key, and only the sealed container is sent.</p></div></div>
+        <div class="step"><span class="n">3</span><div><h3>One shared file, one lock</h3><p>Devices write the same file. A recorded lock and <code>If-None-Match</code> stop one phone from silently crushing another's changes.</p></div></div>
+        <div class="step"><span class="n">4</span><div><h3>Silently renewed</h3><p>The access token is refreshed through Google's authorization client — no client secret inside the APK, and no refresh token stored.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="head">
+        <p class="mono">04 / the numbers</p>
+        <h2>Specification sheet</h2>
+      </div>
+      <dl class="spec">
+        <div class="spec-row"><dt>Encryption at rest</dt><dd>AES-256-GCM per record, AAD = <code>label:id</code></dd></div>
+        <div class="spec-row"><dt>Key derivation</dt><dd>Argon2id (memory-hard) from the master password</dd></div>
+        <div class="spec-row"><dt>Key storage</dt><dd>Android Keystore-wrapped data key; optional biometric wrapper</dd></div>
+        <div class="spec-row"><dt>Sync transport</dt><dd>Plain REST against Google Drive <code>appDataFolder</code></dd></div>
+        <div class="spec-row"><dt>Sync container</dt><dd><code>VKSYNC01</code> — sealed header is also the authenticated data</dd></div>
+        <div class="spec-row"><dt>Google scopes</dt><dd>One only: <code>https://www.googleapis.com/auth/drive.appdata</code></dd></div>
+        <div class="spec-row"><dt>Periodic work</dt><dd>WorkManager, opt-in, runs only when a sync key exists</dd></div>
+        <div class="spec-row"><dt>Failed attempts</dt><dd>Lockout after 5, growing 30 s → 5 min → 30 min</dd></div>
+        <div class="spec-row"><dt>Screen capture</dt><dd>Blocked by <code>FLAG_SECURE</code> — no screenshots, no Recents thumbnail</dd></div>
+        <div class="spec-row"><dt>Analytics</dt><dd>None. There is no telemetry code in the app.</dd></div>
+        <div class="spec-row"><dt>Min / target SDK</dt><dd>26 (Android 8.0) / 35 (Android 15)</dd></div>
+        <div class="spec-row"><dt>Languages</dt><dd>English · العربية · Français</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="note">
+        <p class="mono">05 / read this before you trust it</p>
+        <h3>What VaultKey does not do.</h3>
+        <p>It is not a company and not a cloud service. There is no vault recovery if you lose your master password — the derivation is the only way in, and nothing we hold can undo it. It ships as a self-signed APK for personal use, not through Google Play, so updates are manual and the signing certificate is a debug key rather than a published release key. If any of that is a deal-breaker for how you plan to use it, this may not be the right tool for you — and it is better to say so here than in a support email.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="head">
+        <p class="mono">06 / install</p>
+        <h2>Four steps to a sealed vault.</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="n">1</span><div><h3>Download the APK</h3><p>The button above saves <code>VaultKey-v52.apk</code> directly — about 6 MB, no intermediate page.</p></div></div>
+        <div class="step"><span class="n">2</span><div><h3>Allow this file</h3><p>Android asks once to confirm an app from an unknown source. It is a side-loaded app, so that prompt is expected.</p></div></div>
+        <div class="step"><span class="n">3</span><div><h3>Pick one master password you will keep</h3><p>Long beats clever: it is the only thing between the encrypted rows and nothing. Write it down on paper, not in the vault.</p></div></div>
+        <div class="step"><span class="n">4</span><div><h3>Turn on what you want</h3><p>Autofill, biometric unlock, auto-lock timing and Drive sync are all separate switches, all off until you set them.</p></div></div>
+      </div>
+      <div class="hero-cta" style="margin-top:34px">
+        <a class="btn btn-primary" href="VaultKey-v52.apk" download>Download the APK</a>
+        <a class="btn btn-ghost" href="support.html">Questions first</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="./" style="border:0">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M12,1.8 L20.6,5 L20.6,11.6 C20.6,16.8 17,21 12,22.6 C7,21 3.4,16.8 3.4,11.6 L3.4,5 Z M12,6.8 C13.32,6.8 14.4,7.88 14.4,9.2 C14.4,10.18 13.83,11.03 13,11.45 L13.45,15.2 L10.55,15.2 L11,11.45 C10.17,11.03 9.6,10.18 9.6,9.2 C9.6,7.88 10.68,6.8 12,6.8 Z"/></svg>
+          VaultKey
+        </a>
+        <p class="foot sig">Made with a real keyhole in Algeria.</p>
+      </div>
+      <div class="cols">
+        <a href="privacy.html">Privacy policy</a>
+        <a href="terms.html">Terms of service</a>
+        <a href="support.html">Help &amp; support</a>
+        <a href="mailto:lamindzru@gmail.com">lamindzru@gmail.com</a>
+        <a href="https://github.com/lamin-sudo/VaultKey">Source</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
