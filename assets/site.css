@@ -492,6 +492,17 @@ nav.sites a[aria-current="page"] {
   border-radius: 6px;
 }
 
+/* Inline code appears in the sync steps, the spec sheet and the legal prose —
+   one rule so it never inherits the browser default. */
+code {
+  font: 500 0.86em/1.3 var(--font-mono);
+  color: var(--accent);
+  background: rgba(34, 211, 196, 0.09);
+  padding: 2px 6px;
+  border-radius: 6px;
+  word-break: break-word;
+}
+
 /* ── Steps ────────────────────────────────────────────────────────────── */
 
 .steps {
@@ -575,6 +586,18 @@ nav.sites a[aria-current="page"] {
   flex-wrap: wrap;
   gap: 10px 26px;
   margin-top: 26px;
+}
+
+/* Label above value, as in the hero meta strip — without this the mono label
+   and its value run into one another on one line. */
+.doc-head .meta div {
+  display: grid;
+  gap: 2px;
+}
+
+.doc-head .meta b {
+  font-weight: 600;
+  font-size: 15px;
 }
 
 .doc {
@@ -859,9 +882,22 @@ footer.foot {
     grid-template-columns: 1fr;
   }
 
+  /* Source order, and small: on a phone the headline has to be the first thing
+     in view, not a 300px square that pushes it below the fold. */
   .mark {
-    order: -1;
-    max-height: 300px;
+    order: 0;
+    aspect-ratio: auto;
+    max-height: 190px;
+    padding: 18px;
+  }
+
+  .mark svg {
+    width: min(40%, 130px);
+  }
+
+  .mark .tag {
+    left: 14px;
+    bottom: 12px;
   }
 
   .doc nav.toc {
@@ -871,6 +907,34 @@ footer.foot {
   .spec-row {
     grid-template-columns: 1fr;
     gap: 4px;
+  }
+}
+
+/* The masthead is 68px tall on desktop; once the links have to wrap, a fixed
+   height clips them into the page below. */
+@media (max-width: 760px) {
+  .mast-row {
+    height: auto;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    padding-block: 10px;
+  }
+
+  nav.sites {
+    margin-inline-start: 0;
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+
+  nav.sites::-webkit-scrollbar {
+    display: none;
+  }
+
+  nav.sites a {
+    white-space: nowrap;
   }
 }
 
