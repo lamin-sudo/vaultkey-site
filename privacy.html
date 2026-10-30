@@ -88,7 +88,7 @@
           <li>an advertising ID, a device fingerprint, or a profile of how you use the app;</li>
           <li>crash reports or analytics events. There is no analytics or crash-reporting library in the build.</li>
         </ul>
-        <p>Network access in the app is used by exactly three things, all of which you start: the Google sign-in and token renewal handled by Google Play services; the Drive file transfer described in section 4; and — if you tap <em>Check for updates</em> on the About screen — a single request to this site for a small release manifest, followed only if you agree on the same screen by the download of the build that manifest names, which comes from this project's GitHub Releases page. That request carries no vault data, no account identifier and no token; the manifest's build is verified by SHA-256 before Android is asked to install it, and Android always shows its own confirmation sheet. If you never sign in for sync and never tap that row, VaultKey makes no outbound request on its own.</p>
+        <p>Network access in the app is used by exactly three things, all of which you start: the Google sign-in and token renewal handled by Google Play services; the Drive file transfer described in section 4; and — if you tap <em>Check for updates</em> on the About screen — a single request to this site for a small release manifest, followed only if you agree on the same screen by the download of the build that manifest names, which is served from this site itself. That request carries no vault data, no account identifier and no token; the manifest's build is verified by SHA-256 before Android is asked to install it, and Android always shows its own confirmation sheet. If you never sign in for sync and never tap that row, VaultKey makes no outbound request on its own.</p>
       </section>
 
       <section id="s3">
@@ -206,7 +206,7 @@
         <a href="terms.html">Terms of service</a>
         <a href="support.html">Help &amp; support</a>
         <a href="mailto:lamindzru@gmail.com">lamindzru@gmail.com</a>
-        <a href="https://github.com/lamin-sudo/vaultkey-site/releases/download/v55/VaultKey-v55.apk" download>Download the APK</a>
+        <a href="VaultKey-v55.apk" download>Download the APK</a>
       </div>
     </div>
   </div>

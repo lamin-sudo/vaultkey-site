@@ -1,7 +1,7 @@
 {
   "versionCode": "55",
   "versionName": "1.0.0-redesign-v55",
-  "url": "https://github.com/lamin-sudo/vaultkey-site/releases/download/v55/VaultKey-v55.apk",
+  "url": "https://hadji.is-a.dev/vaultkey-site/VaultKey-v55.apk",
   "sha256": "2b318030b72dd0cb49fea7311e46e15ce26e9902b9c993329bfeea3d42834764",
   "sizeBytes": "6106835",
   "notes": "Check for updates, in-app. The About screen now asks this site for a build number and, if you tap again, downloads that build and verifies its SHA-256 before Android is asked to install it."
