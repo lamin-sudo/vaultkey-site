@@ -36,7 +36,7 @@
     <h1>Privacy policy</h1>
     <div class="meta">
       <div><span class="mono">applies to</span><b>VaultKey for Android · build 52</b></div>
-      <div><span class="mono">last reviewed</span><b>14 October 2026</b></div>
+      <div><span class="mono">last reviewed</span><b>30 October 2026</b></div>
       <div><span class="mono">contact</span><b><a href="mailto:lamindzru@gmail.com">lamindzru@gmail.com</a></b></div>
     </div>
   </div>
@@ -88,7 +88,7 @@
           <li>an advertising ID, a device fingerprint, or a profile of how you use the app;</li>
           <li>crash reports or analytics events. There is no analytics or crash-reporting library in the build.</li>
         </ul>
-        <p>Network access in the app is used by exactly two things, both of which you start: the Google sign-in and token renewal handled by Google Play services, and the Drive file transfer described in section 4. If you never sign in for sync, VaultKey makes no outbound request on its own.</p>
+        <p>Network access in the app is used by exactly three things, all of which you start: the Google sign-in and token renewal handled by Google Play services; the Drive file transfer described in section 4; and — if you tap <em>Check for updates</em> on the About screen — a single request to this site for a small release manifest, followed only if you agree on the same screen by the download of the build that manifest names, which comes from this project's GitHub Releases page. That request carries no vault data, no account identifier and no token; the manifest's build is verified by SHA-256 before Android is asked to install it, and Android always shows its own confirmation sheet. If you never sign in for sync and never tap that row, VaultKey makes no outbound request on its own.</p>
       </section>
 
       <section id="s3">
@@ -103,6 +103,7 @@
           <li><strong>Sync records (optional).</strong> After signing in: the Google account address you chose, an OAuth access token scoped to Drive appData, and the wrapped sync key. The address and token are encrypted with a Keystore key before being written; the access token is short-lived and is renewed rather than stored long-term.</li>
           <li><strong>Display identity (optional).</strong> If you sign in, the app reads the account name and profile photo from the credential Google already hands it, downloads the photo once, and stores it encrypted next to the vault data purely so the Account screen can show who you are. It is never sent anywhere else.</li>
           <li><strong>Settings.</strong> Auto-lock timing, language, categories, and the last security-scan summary (a score and counts, not entry content).</li>
+          <li><strong>A downloaded update, briefly.</strong> If you install a build from inside the app, its APK is written to the app's own cache, hashed with SHA-256 and compared with the hash published beside it, and only on a match handed to Android's installer. The file contains no part of your vault.</li>
         </ul>
       </section>
 
@@ -205,7 +206,7 @@
         <a href="terms.html">Terms of service</a>
         <a href="support.html">Help &amp; support</a>
         <a href="mailto:lamindzru@gmail.com">lamindzru@gmail.com</a>
-        <a href="https://github.com/lamin-sudo/vaultkey-site/releases/download/v54/VaultKey-v54.apk" download>Download the APK</a>
+        <a href="https://github.com/lamin-sudo/vaultkey-site/releases/download/v55/VaultKey-v55.apk" download>Download the APK</a>
       </div>
     </div>
   </div>
